@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutVôlei I.A - Resposta Integrada</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="fundo-praia-3d">
+        <div class="esfera-sol-3d"></div>
+        <div class="onda-3d onda-1"></div>
+        <div class="onda-3d onda-2"></div>
+    </div>
+
+    <main class="caixa-principal">
+        <header class="cabecalho-praia">
+            <div class="icone-bola-3d">
+                <i data-lucide="volleyball"></i>
+            </div>
+            <h1>FutVôlei <span>I.A Search</span></h1>
+            <p>Pergunte qualquer coisa sobre futevôlei e receba a resposta direta aqui!</p>
+        </header>
+
+        <!-- Seção de Busca -->
+        <section class="secao-pergunta">
+            <div class="campo-busca">
+                <input type="text" id="input-pergunta" placeholder="Ex: Regras, história, bola oficial, Mikasa..." />
+                <button id="btn-perguntar" class="btn-praia">
+                    <i data-lucide="search"></i>
+                    <span>Buscar</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Sugestões de Perguntas -->
+        <section class="caixa-perguntas">
+            <h3>Perguntas frequentes na web:</h3>
+            <div class="caixa-alternativas">
+                <button class="btn-sugestao" onclick="buscarEExibir('Futevôlei')">O que é Futevôlei?</button>
+                <button class="btn-sugestao" onclick="buscarEExibir('Regras do Futevôlei')">Regras Básicas</button>
+                <button class="btn-sugestao" onclick="buscarEExibir('História do Futevôlei')">Origem no Brasil</button>
+                <button class="btn-sugestao" onclick="buscarEExibir('Bola de Futevôlei')">Bola Oficial</button>
+            </div>
+        </section>
+
+        <!-- Seção onde a resposta é renderizada -->
+        <section class="caixa-resultado">
+            <div class="card-resposta">
+                <div class="card-cabecalho">
+                    <span class="tag-praia" id="status-busca">
+                        <i data-lucide="sparkles"></i> Resposta da I.A
+                    </span>
+                    <button id="btn-ouvir" class="btn-voz" title="Ouvir resposta com Voz I.A">
+                        <i data-lucide="volume-2"></i>
+                        <span>Ouvir</span>
+                    </button>
+                </div>
+
+                <div class="caixa-resultados">
+                    <p class="texto-resultado" id="texto-resultado">
+                        Digite uma pergunta acima ou clique em uma das sugestões para ver a resposta carregada nesta mesma página.
+                    </p>
+                </div>
+
+                <div class="link-noticia-container" id="link-noticia-container" style="display: none;">
+                    <a href="#" id="link-noticia" target="_blank" rel="noopener noreferrer" class="btn-link-noticia">
+                        <i data-lucide="link"></i>
+                        <span>Fonte / Matéria original</span>
+                        <i data-lucide="external-link"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

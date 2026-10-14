@@ -1,0 +1,312 @@
+:root {
+    --fundo-escuro: #070709;
+    --card-fundo: rgba(16, 16, 22, 0.92);
+    --sol-quente: #ff7e33;
+    --sol-dourado: #ffb03a;
+    --areia-clara: #f7e1b5;
+    --mar-turquesa: #00d2d3;
+    --mar-azul: #0abde3;
+    --texto-claro: #f1f2f6;
+    --texto-suave: #a4b0be;
+    --borda-glow: rgba(255, 126, 51, 0.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--fundo-escuro);
+    color: var(--texto-claro);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Elementos 3D praianos de fundo */
+.fundo-praia-3d {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.esfera-sol-3d {
+    position: absolute;
+    top: -80px;
+    right: -40px;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, var(--sol-dourado), var(--sol-quente) 60%, transparent 90%);
+    box-shadow: 0 0 70px rgba(255, 126, 51, 0.35);
+    filter: blur(8px);
+    opacity: 0.55;
+    animation: flutuarSol 10s ease-in-out infinite alternate;
+}
+
+.onda-3d {
+    position: absolute;
+    bottom: -150px;
+    left: -10%;
+    width: 120%;
+    height: 280px;
+    border-radius: 40%;
+    filter: blur(25px);
+    opacity: 0.2;
+}
+
+.onda-1 {
+    background: linear-gradient(45deg, var(--mar-turquesa), var(--mar-azul));
+    animation: ondaMovimento 14s ease-in-out infinite alternate;
+}
+
+.onda-2 {
+    bottom: -170px;
+    background: linear-gradient(135deg, var(--sol-quente), var(--mar-turquesa));
+    animation: ondaMovimento 18s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes flutuarSol {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(25px) scale(1.04); }
+}
+
+@keyframes ondaMovimento {
+    0% { transform: rotate(0deg) scaleY(1); }
+    100% { transform: rotate(6deg) scaleY(1.15); }
+}
+
+/* Card Principal da Página */
+.caixa-principal {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 720px;
+    background: var(--card-fundo);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 35px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 30px var(--borda-glow);
+}
+
+.cabecalho-praia {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.icone-bola-3d {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--sol-dourado), var(--sol-quente));
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(255, 126, 51, 0.35);
+    margin-bottom: 12px;
+}
+
+.cabecalho-praia h1 {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.cabecalho-praia h1 span {
+    background: linear-gradient(45deg, var(--sol-dourado), var(--mar-turquesa));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cabecalho-praia p {
+    color: var(--texto-suave);
+    font-size: 0.95rem;
+    margin-top: 6px;
+}
+
+/* Entrada de Pergunta */
+.secao-pergunta {
+    margin-bottom: 25px;
+}
+
+.campo-busca {
+    display: flex;
+    gap: 10px;
+}
+
+.campo-busca input {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 14px 18px;
+    border-radius: 14px;
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.campo-busca input:focus {
+    border-color: var(--sol-quente);
+    box-shadow: 0 0 12px rgba(255, 126, 51, 0.3);
+}
+
+.btn-praia {
+    background: linear-gradient(135deg, var(--sol-quente), var(--sol-dourado));
+    border: none;
+    color: #fff;
+    padding: 0 20px;
+    border-radius: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 126, 51, 0.3);
+}
+
+.btn-praia:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 126, 51, 0.5);
+}
+
+/* Sugestões */
+.caixa-perguntas h3 {
+    font-size: 0.88rem;
+    color: var(--texto-suave);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.caixa-alternativas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.btn-sugestao {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--areia-clara);
+    padding: 8px 14px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-sugestao:hover {
+    background: rgba(255, 126, 51, 0.15);
+    border-color: var(--sol-quente);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Exibição da Resposta */
+.card-resposta {
+    background: rgba(10, 10, 15, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 22px;
+}
+
+.card-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tag-praia {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--sol-dourado);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.btn-voz {
+    background: rgba(0, 210, 211, 0.1);
+    border: 1px solid var(--mar-turquesa);
+    color: var(--mar-turquesa);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-voz:hover {
+    background: var(--mar-turquesa);
+    color: #000;
+}
+
+.btn-voz.lendo {
+    background: var(--sol-quente);
+    border-color: var(--sol-quente);
+    color: #fff;
+    animation: pulsarVoz 1.5s infinite;
+}
+
+@keyframes pulsarVoz {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+.texto-resultado {
+    color: var(--texto-claro);
+    line-height: 1.6;
+    font-size: 0.98rem;
+}
+
+.link-noticia-container {
+    margin-top: 18px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-link-noticia {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--mar-turquesa);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.btn-link-noticia:hover {
+    color: var(--sol-dourado);
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .caixa-principal { padding: 20px; }
+    .campo-busca { flex-direction: column; }
+    .btn-praia { justify-content: center; padding: 12px; }
+}
